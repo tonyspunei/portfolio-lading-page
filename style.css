@@ -218,3 +218,215 @@ main {
   color: #000000;
   font-weight: bold;
 }
+
+#normal-text {
+  font-size: 1.2rem;
+  color: rgb(99, 99, 99);
+}
+
+/* MENU WRAPPER */
+
+.menu-wrap {
+  position: fixed;
+  top: 1rem;
+  right: 8rem;
+  z-index: 1;
+  display: none;
+}
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background: rgba(13, 110, 139, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger line */
+.menu-wrap .hamburger > div {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+/* TOP and BOTTOM lines */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+}
+/* MOVES line DOWN */
+.menu-wrap .hamburger > div::after {
+  top: 10px;
+}
+/* TOGGLER ANIMATE */
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+/* TURN LINES INTON X */
+.menu-wrap .toggler:checked + .hamburger > div::before,
+.menu-wrap .toggler:checked + .hamburger > div::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+/* ROTATE ON HOVER when checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: 0.75;
+}
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+/* Styling */
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-wrap .menu > div {
+  background: rgba(24, 39, 51, 0.85);
+  border-radius: 50%;
+  width: 200vh;
+  height: 200vh;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vh;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.menu-wrap .menu > div > div > ul > li {
+  list-style: none;
+  padding: 2rem;
+}
+.menu-wrap .menu > div > div > ul > li > a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.4s ease;
+  font-size: 3rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 600px) {
+  .links-wrapper {
+    display: none;
+    width: 100%;
+  }
+  .logo {
+    width: 80%;
+  }
+  .menu-wrap {
+    display: inline;
+  }
+  .big-text > h1 {
+    font-size: 3rem;
+  }
+  .desc-text > p {
+    font-size: 2rem;
+  }
+  .image-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .image {
+    height: 10rem;
+    width: 100%;
+  }
+  .instagram-link {
+    height: 8rem;
+    width: 30rem;
+    bottom: 0;
+  }
+  .instagram-link > a {
+    margin-top: 10%;
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 601px) {
+  .links-wrapper {
+    display: none;
+    width: 100%;
+  }
+
+  .logo {
+    width: 50%;
+  }
+  .menu-wrap {
+    display: inline;
+  }
+  .big-text > h1 {
+    font-size: 4rem;
+  }
+  .desc-text > p {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .logo {
+    width: 30%;
+  }
+  .menu-wrap {
+    display: none;
+  }
+  .links-wrapper {
+    display: flex;
+    width: 40%;
+  }
+  .big-text > h1 {
+    font-size: 6rem;
+  }
+  .desc-text > p {
+    font-size: 2rem;
+  }
+}
